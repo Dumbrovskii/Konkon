@@ -23,3 +23,7 @@ function App() {
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(React.createElement(App));
+
+if (typeof module !== 'undefined') {
+  module.exports = App;
+}
