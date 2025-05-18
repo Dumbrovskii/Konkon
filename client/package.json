@@ -1,0 +1,17 @@
+{
+  "name": "konkon-client",
+  "version": "0.1.0",
+  "description": "Frontend for KonKon Web Application",
+  "scripts": {
+    "start": "" ,
+    "test": "jest"
+  },
+  "dependencies": {
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "devDependencies": {
+    "jest": "^29.7.0",
+    "@testing-library/react": "^14.2.1"
+  }
+}
