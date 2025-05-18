@@ -13,10 +13,11 @@ This repository contains a minimal prototype of **KonKon**, a kiosk-mode web app
    ```bash
    cd server && npm install
    cd ../client && npm install
+   cd ../server # return to server directory
    ```
-2. Start the backend server:
+2. Start the backend server from inside `server/`:
    ```bash
-   node src/server.js
+   npm start
    ```
 3. Open `client/index.html` in Firefox kiosk mode to access the UI.
 
