@@ -6,6 +6,8 @@ This repository contains a minimal prototype of **KonKon**, a kiosk-mode web app
 
 - **server/** – Express backend with a Socket.IO server.
 - **client/** – Simple React application served as static files.
+- **recorder/** – CLI utility for capturing webcam/audio and uploading
+  transcripts.
 
 ## Running
 
