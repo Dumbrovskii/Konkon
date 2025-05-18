@@ -18,6 +18,10 @@ This repository contains a minimal prototype of **KonKon**, a kiosk-mode web app
    ```bash
    node src/server.js
    ```
-3. Open `client/index.html` in Firefox kiosk mode to access the UI.
+3. Serve the frontend:
+   ```bash
+   cd client && npm start
+   ```
+   Then open `http://localhost:3000` in your browser.
 
 This prototype implements the core API endpoint `/api/create-call` which generates a unique room identifier. Clients connect via Socket.IO to exchange signaling messages for WebRTC connections.
