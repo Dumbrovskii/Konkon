@@ -3,9 +3,13 @@ const { Server } = require('socket.io');
 const { app } = require('./app');
 
 const server = http.createServer(app);
+const allowedOriginsEnv = process.env.ALLOWED_ORIGINS;
+const allowedOrigins = allowedOriginsEnv
+  ? allowedOriginsEnv.split(',').map((o) => o.trim()).filter(Boolean)
+  : '*';
 const io = new Server(server, {
   cors: {
-    origin: '*',
+    origin: allowedOrigins,
   },
 });
 
@@ -24,3 +28,5 @@ const PORT = process.env.PORT || 3000;
 server.listen(PORT, () => {
   console.log(`Server listening on port ${PORT}`);
 });
+
+module.exports = { server, io };

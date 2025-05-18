@@ -18,4 +18,21 @@ app.get('/call/:roomId', (req, res) => {
   res.sendFile(path.join(__dirname, '../client/call.html'));
 });
 
+app.get('/api/error', (req, res, next) => {
+  const err = new Error('Test error');
+  err.status = 500;
+  next(err);
+});
+
+app.use((req, res, next) => {
+  const err = new Error('Not Found');
+  err.status = 404;
+  next(err);
+});
+
+app.use((err, req, res, next) => {
+  const status = err.status || 500;
+  res.status(status).json({ code: status, message: err.message });
+});
+
 module.exports = { app, rooms };
