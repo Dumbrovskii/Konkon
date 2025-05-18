@@ -8,3 +8,10 @@ describe('POST /api/create-call', () => {
     expect(res.body.roomId).toBeDefined();
   });
 });
+
+describe('Invalid requests', () => {
+  it('returns 404 for unknown endpoint', async () => {
+    const res = await request(app).get('/api/does-not-exist');
+    expect(res.statusCode).toBe(404);
+  });
+});
