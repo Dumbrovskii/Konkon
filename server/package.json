@@ -10,7 +10,8 @@
   "dependencies": {
     "express": "^4.19.2",
     "socket.io": "^4.7.5",
-    "uuid": "^9.0.1"
+    "uuid": "^9.0.1",
+    "sqlite3": "^5.1.6"
   },
   "devDependencies": {
     "jest": "^29.7.0",
