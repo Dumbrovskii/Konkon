@@ -3,9 +3,12 @@ const { Server } = require('socket.io');
 const { app } = require('./app');
 
 const server = http.createServer(app);
+const allowedOriginsEnv = process.env.ALLOWED_ORIGINS;
 const io = new Server(server, {
   cors: {
-    origin: '*',
+    origin: allowedOriginsEnv
+      ? allowedOriginsEnv.split(',').map((o) => o.trim())
+      : '*',
   },
 });
 
