@@ -18,4 +18,10 @@ app.get('/call/:roomId', (req, res) => {
   res.sendFile(path.join(__dirname, '../client/call.html'));
 });
 
+// Error handling middleware
+app.use((err, req, res, next) => {
+  console.error(err);
+  res.status(500).json({ error: 'Internal Server Error' });
+});
+
 module.exports = { app, rooms };
