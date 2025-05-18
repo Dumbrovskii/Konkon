@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "description": "Frontend for KonKon Web Application",
   "scripts": {
-    "start": "" ,
+    "start": "npx serve -s .",
     "test": "jest"
   },
   "dependencies": {
