@@ -1,7 +1,9 @@
 const http = require('http');
 const { Server } = require('socket.io');
 const { app } = require('./app');
+const db = require('./db');
 
+db.init();
 const server = http.createServer(app);
 const io = new Server(server, {
   cors: {
@@ -11,6 +13,11 @@ const io = new Server(server, {
 
 io.on('connection', (socket) => {
   socket.on('join-room', (roomId) => {
+    const room = db.getRoom(roomId);
+    if (!room) {
+      socket.emit('error', 'Room not found');
+      return;
+    }
     socket.join(roomId);
     socket.to(roomId).emit('user-joined', socket.id);
 
