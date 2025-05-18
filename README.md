@@ -23,3 +23,24 @@ This repository contains a minimal prototype of **KonKon**, a kiosk-mode web app
 3. Open `client/index.html` in Firefox kiosk mode to access the UI.
 
 This prototype implements the core API endpoint `/api/create-call` which generates a unique room identifier. Clients connect via Socket.IO to exchange signaling messages for WebRTC connections.
+
+## recorder/ Tool
+
+The repository also includes a CLI recorder under `recorder/`. The tool writes
+video files to a USB drive and uploads metadata to Kitsu9.
+
+Set the following environment variables before running it:
+
+- `USB_PATH` – mount path of the writable USB drive
+- `DURATION` – recording duration in seconds
+- `KITSU9_URL` – URL of the Kitsu9 instance
+
+Example usage:
+
+```bash
+USB_PATH=/media/usb1 DURATION=60 KITSU9_URL=http://localhost:9009 \
+  node recorder/index.js
+```
+
+Metadata files describing the session are written alongside each recorded
+media file.
