@@ -1,6 +1,7 @@
 const http = require('http');
 const { Server } = require('socket.io');
 const { app } = require('./app');
+const { getRoom } = require('./db');
 
 const server = http.createServer(app);
 const io = new Server(server, {
@@ -10,7 +11,12 @@ const io = new Server(server, {
 });
 
 io.on('connection', (socket) => {
-  socket.on('join-room', (roomId) => {
+  socket.on('join-room', async (roomId) => {
+    const room = await getRoom(roomId);
+    if (!room) {
+      socket.emit('error', 'Room not found');
+      return;
+    }
     socket.join(roomId);
     socket.to(roomId).emit('user-joined', socket.id);
 
